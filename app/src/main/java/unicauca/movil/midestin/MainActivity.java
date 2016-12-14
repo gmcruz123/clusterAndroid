@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r1.setEmpresa("Bolivariano");
         r1.setFecha("2016-12-13");
         r1.setModo("compra");
+        r1.setHora("9:00");
         r1.setPrecio(70000);
         r1.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r2.setFecha("2016-12-13");
         r2.setModo("compra");
         r2.setPrecio(70000);
+        r2.setHora("12:00");
         r2.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
         L.data.add(r1);
