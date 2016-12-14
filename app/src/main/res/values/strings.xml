@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Mi Destino</string>
+    <string name="slogan">El sabor de tu ciudad</string>
+    <string name="login_usr">Usuario</string>
+    <string name="login_pass">Contraseña</string>
+    <string name="login_reg">Registrarse</string>
+    <string name="login_in">Entrar</string>
+    <string name="menu_all">Todos</string>
+    <string name="menu_favorite">Favoritos</string>
+    <string name="menu_meet">Carnes</string>
+    <string name="menu_vegetarian">Vegetariano</string>
+    <string name="menu_pizza">Pizzeria</string>
+    <string name="menu_mexican">Mexicana</string>
+    <string name="menu_sea">Mar</string>
+    <string name="menu_gourmet">Gourmet</string>
+    <string name="menu_coffee">Cafeterias</string>
+    <string name="menu_bar">Bares</string>
+    <string name="menu_logout">Cerrar Sesión</string>
+    <string name="ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu fringilla dui, eu luctus magna. Vivamus id orci bibendum, vulputate nulla vel, molestie nisl. Morbi facilisis mattis orci ac dictum. Fusce congue et mi non dictum. Sed vulputate rutrum nunc, ac convallis felis bibendum in. Nullam felis elit, viverra ac mi a, vulputate mollis tortor. Proin nec egestas velit, sit amet placerat orci. Sed vel libero leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse imperdiet augue et accumsan varius. Mauris id lorem vehicula urna hendrerit finibus.</string>
+    <string name="detail_phone">Telefono</string>
+    <string name="detail_address">Dirección</string>
+    <string name="detail_score">Calificación</string>
+    <string name="detail_description">Descripcion</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="menu_open">Menu Abierto</string>
+    <string name="menu_close">Menu Cerrado</string>
+    <string name="tus_tiquetes">Tus tiquetes</string>
+    <string name="tus_reservas">Tus reservas</string>
+    <string name="comprar">Comprar o reservar</string>
+    <string name="informacion">Informacion</string>
+    <string name="mi_destino">Mi destino</string>
+</resources>
