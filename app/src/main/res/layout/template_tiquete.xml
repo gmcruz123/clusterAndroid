@@ -8,11 +8,16 @@
         <variable
             name="tiq"
             type="unicauca.movil.midestin.models.Tiquete"/>
+
+        <variable
+            name="handler"
+            type="unicauca.movil.midestin.Adapters.TiqueteAdapter"/>
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{(view)-> handler.onClickTiquete(view)}">
 
 
         <android.support.v7.widget.CardView
@@ -23,7 +28,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+               >
 
                 <ImageView
                     android:id="@+id/img"
@@ -32,6 +38,7 @@
                     android:background="#333"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
+                    android:scaleType="centerCrop"
                     app:imgUrl= "@{tiq.imagen}"
                     />
 

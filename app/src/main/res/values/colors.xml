@@ -6,4 +6,5 @@
     <color name="lightPrimaryColor">#F8BBD0</color>
     <color name="icon">#333333</color>
     <color name="iconAction">#ffffff</color>
+    <color name="divider">#BDBDBD</color>
 </resources>

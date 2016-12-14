@@ -1,5 +1,6 @@
 package unicauca.movil.midestin;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -17,7 +18,7 @@ import unicauca.movil.midestin.databinding.ActivityMainBinding;
 import unicauca.movil.midestin.models.Tiquete;
 import unicauca.movil.midestin.util.L;
 
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener {
+public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, TiqueteAdapter.OnTiqueteListener {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
         binding.drawer.addDrawerListener(this);
         L.data = new ArrayList<>();
-        adapter= new TiqueteAdapter(getLayoutInflater());
+        adapter= new TiqueteAdapter(getLayoutInflater(),this);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
 
@@ -118,5 +119,14 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
         adapter.notifyDataSetChanged();
     }
+
     //endregion
+    @Override
+    public void onTiquete(View v) {
+        int  pos = binding.recycler.getChildAdapterPosition(v);
+
+        Intent intent = new Intent(this, DetailActivityTiquete.class);
+        intent.putExtra(DetailActivityTiquete.EXTRA_POS,pos);
+        startActivity(intent);
+    }
 }

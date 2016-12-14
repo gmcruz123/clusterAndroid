@@ -14,9 +14,14 @@ import com.squareup.picasso.Picasso;
 
 public class TiqueteAdapter extends RecyclerView.Adapter<TiqueteAdapter.TiqueteViewHolder>{
 
+    public interface OnTiqueteListener{
+        void onTiquete(View v);
+    }
     LayoutInflater inflater;
+    OnTiqueteListener onTiqueteListener;
 
-    public TiqueteAdapter(LayoutInflater inflater){
+    public TiqueteAdapter(LayoutInflater inflater, OnTiqueteListener onTiqueteListener){
+        this.onTiqueteListener= onTiqueteListener;
         this.inflater= inflater;
     }
 
@@ -30,7 +35,7 @@ public class TiqueteAdapter extends RecyclerView.Adapter<TiqueteAdapter.TiqueteV
     @Override
     public void onBindViewHolder(TiqueteViewHolder holder, int position) {
         holder.binding.setTiq(L.data.get(position));
-       // Picasso.with().load().into(holder.binding.img);
+        holder.binding.setHandler(this);
     }
 
     @Override
@@ -38,6 +43,13 @@ public class TiqueteAdapter extends RecyclerView.Adapter<TiqueteAdapter.TiqueteV
 
         return L.data.size();
     }
+
+    public void onClickTiquete (View v){
+        onTiqueteListener.onTiquete(v);
+
+    }
+
+
 //Retorna tipo de variable o celda
  /*   @Override
     public int getItemViewType(int position) {
