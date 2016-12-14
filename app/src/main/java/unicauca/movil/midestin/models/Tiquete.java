@@ -13,13 +13,25 @@ public class Tiquete {
     private String hora;
     private String modo;
     private String imagen;
-    private double idTiquete,cedula,precio, silla ;
+
+
+
+    private String idTiquete;
+    private double cedula,precio, silla ;
 
     public String getNombre() {
         return nombre;
     }
     public String getImagen() {
         return imagen;
+    }
+
+    public String getIdTiquete() {
+        return idTiquete;
+    }
+
+    public void setIdTiquete(String idTiquete) {
+        this.idTiquete = idTiquete;
     }
     public void setImagen(String imagen) {
         this.imagen = imagen;
@@ -77,13 +89,7 @@ public class Tiquete {
         this.modo = modo;
     }
 
-    public double getIdTiquete() {
-        return idTiquete;
-    }
 
-    public void setIdTiquete(double idTiquete) {
-        this.idTiquete = idTiquete;
-    }
 
     public double getCedula() {
         return cedula;

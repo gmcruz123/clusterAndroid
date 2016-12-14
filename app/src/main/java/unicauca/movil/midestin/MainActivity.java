@@ -6,11 +6,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
 
+import unicauca.movil.midestin.Adapters.TiqueteAdapter;
 import unicauca.movil.midestin.databinding.ActivityMainBinding;
 import unicauca.movil.midestin.models.Tiquete;
 import unicauca.movil.midestin.util.L;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
+
+   TiqueteAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 R.string.menu_close);
 
         binding.drawer.addDrawerListener(this);
+        L.data = new ArrayList<>();
+        adapter= new TiqueteAdapter(getLayoutInflater());
+        binding.recycler.setAdapter(adapter);
+        binding.recycler.setLayoutManager(new LinearLayoutManager(this));
 
         loadData();
     }
@@ -77,10 +85,10 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     //region LoadData
     private void loadData(){
-        L.data = new ArrayList<>();
+
 
         Tiquete r1 = new Tiquete();
-        r1.setIdTiquete(1);
+        r1.setIdTiquete("1");
         r1.setEmpresa("Bolivariano");
         r1.setNombre("Tasha");
         r1.setDestino("Cali");
@@ -92,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r1.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
         Tiquete r2 = new Tiquete();
-        r2.setIdTiquete(2);
+        r2.setIdTiquete("2");
         r2.setDestino("Cali");
         r2.setNombre("Tasha");
         r2.setEmpresa("Bolivariano");
@@ -105,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
         L.data.add(r1);
         L.data.add(r2);
+
+        adapter.notifyDataSetChanged();
     }
     //endregion
 }
