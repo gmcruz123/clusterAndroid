@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import unicauca.movil.midestin.databinding.ActivityMainBinding;
 import unicauca.movil.midestin.models.Tiquete;
+import unicauca.movil.midestin.util.L;
 
 public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener {
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 R.string.menu_close);
 
         binding.drawer.addDrawerListener(this);
+
         loadData();
     }
 
@@ -73,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     //region LoadData
     private void loadData(){
-
+        L.data = new ArrayList<>();
 
         Tiquete r1 = new Tiquete();
         r1.setIdTiquete(1);
@@ -99,7 +103,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r2.setPrecio(70000);
         r2.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
-
+        L.data.add(r1);
+        L.data.add(r2);
     }
     //endregion
 }
