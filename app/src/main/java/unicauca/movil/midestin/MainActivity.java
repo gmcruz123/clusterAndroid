@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
 
         Tiquete r1 = new Tiquete();
-        r1.setIdTiquete("1");
+        r1.setIdTiquete(1);
         r1.setEmpresa("Bolivariano");
         r1.setNombre("Tasha");
         r1.setDestino("Cali");
@@ -99,10 +99,12 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r1.setModo("compra");
         r1.setHora("9:00");
         r1.setPrecio(70000);
+        r1.setSilla(2);
+        r1.setCedula(1235);
         r1.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
         Tiquete r2 = new Tiquete();
-        r2.setIdTiquete("2");
+        r2.setIdTiquete(2);
         r2.setDestino("Cali");
         r2.setNombre("Tasha");
         r2.setEmpresa("Bolivariano");
@@ -112,6 +114,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r2.setModo("compra");
         r2.setPrecio(70000);
         r2.setHora("12:00");
+        r2.setCedula(124);
+        r2.setSilla(5);
         r2.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
         L.data.add(r1);

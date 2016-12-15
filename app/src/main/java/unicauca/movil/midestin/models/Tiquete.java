@@ -16,8 +16,17 @@ public class Tiquete {
 
 
 
-    private String idTiquete;
+    private int idTiquete;
     private double cedula,precio, silla ;
+
+
+    public int getIdTiquete() {
+        return idTiquete;
+    }
+
+    public void setIdTiquete(int idTiquete) {
+        this.idTiquete = idTiquete;
+    }
 
     public String getNombre() {
         return nombre;
@@ -26,13 +35,7 @@ public class Tiquete {
         return imagen;
     }
 
-    public String getIdTiquete() {
-        return idTiquete;
-    }
 
-    public void setIdTiquete(String idTiquete) {
-        this.idTiquete = idTiquete;
-    }
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }

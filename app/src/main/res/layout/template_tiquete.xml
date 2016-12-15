@@ -62,7 +62,7 @@
                     android:layout_toRightOf="@+id/tiquete"
                     android:paddingBottom="15dp"
                     tools:text="TIQUETE"
-                    android:text="@{tiq.idTiquete}"
+                    android:text='@{"Tiquete No."+tiq.idTiquete}'
                     android:id="@+id/tiqueteText" />
 
                 <ImageView

@@ -16,56 +16,150 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Caption"
-            android:layout_marginLeft="@dimen/medium"
-            android:layout_marginRight="@dimen/medium"
-            android:layout_marginTop="@dimen/small"
-            tools:text="Gourmet"
-            android:text="@{rest.hora}"
-            />
+            style="@style/TextAppearance.AppCompat.Small"
+            android:paddingLeft="@dimen/medium"
+            android:paddingRight="@dimen/medium"
+            android:paddingTop="@dimen/medium"
+            android:text="Información del pasajero" />
 
         <RelativeLayout android:padding="@dimen/medium">
 
+
             <ImageView
-                android:id="@+id/icon_call"
+                android:id="@+id/icon_usuario"
                 style="@style/IconDetail"
                 android:layout_marginBottom="@dimen/medium"
-                android:src="@drawable/calendario" />
+                android:src="@drawable/usuario" />
 
             <TextView
-                android:id="@+id/label_phone"
+                android:id="@+id/label_nombre"
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/icon_call"
-                android:layout_toRightOf="@id/icon_call"
-                tools:text="3011232323"
-                android:text="@{rest.fecha}"
+                android:layout_alignTop="@id/icon_usuario"
+                android:layout_toRightOf="@id/icon_usuario"
+                tools:text="Latherin"
+                android:text="@{rest.nombre}"
                 />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/label_phone"
-                android:layout_toRightOf="@id/icon_call"
-                android:text="@string/detail_phone" />
+                android:layout_below="@id/label_nombre"
+                android:layout_toRightOf="@id/icon_usuario"
+                android:text="Nombre" />
 
             <ImageView
-                android:id="@+id/icon_place"
+                android:id="@+id/icon_cedula"
                 style="@style/IconDetail"
-                android:layout_below="@id/icon_call"
+                android:layout_below="@id/icon_usuario"
                 android:layout_marginBottom="@dimen/medium"
-                android:src="@drawable/calendario" />
+                android:src="@drawable/cedula" />
 
             <TextView
-                android:id="@+id/label_place"
+                android:id="@+id/label_cedula"
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/icon_place"
-                android:layout_toRightOf="@id/icon_place"
-                tools:text="Calle falsa 123"
+                android:layout_alignTop="@id/icon_cedula"
+                android:layout_toRightOf="@id/icon_cedula"
+                tools:text="1061779427"
+                android:text='@{""+rest.cedula}'
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_cedula"
+                android:layout_toRightOf="@id/icon_cedula"
+                android:text="Cedula"
+                android:id="@+id/label_ced"
+                />
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_below="@id/label_ced"
+            android:id="@+id/separador"
+            />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Small"
+            android:paddingLeft="@dimen/medium"
+            android:paddingRight="@dimen/medium"
+            android:paddingTop="@dimen/medium"
+            android:text="Información del viaje" />
+
+        <RelativeLayout >
+
+            <TextView
+                android:id="@+id/label_tiquete"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="10dp"
+                tools:text="Tiquete #"
+                android:text='@{"Tiquete #"+rest.idTiquete}'
+                />
+
+
+
+            <ImageView
+                android:id="@+id/icon_siguiente"
+                style="@style/IconDetail"
+                android:layout_marginLeft="10dp"
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/label_tiquete"
+                android:src="@drawable/siguiente" />
+            <TextView
+                android:id="@+id/label_origen"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label_tiquete"
+                android:paddingBottom="@dimen/medium"
+                android:layout_toLeftOf="@id/icon_siguiente"
+                tools:text="Origen"
+                android:text="@{rest.origen}"
+                />
+
+            <TextView
+                android:id="@+id/label_destino"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label_tiquete"
+                android:layout_toRightOf="@id/icon_siguiente"
+                android:paddingBottom="10dp"
+                tools:text="Destino"
+                android:text="@{rest.destino}"
+                />
+
+            <ImageView
+                android:id="@+id/icon_empresa"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@+id/label_origen"
+                android:src="@drawable/bus" />
+
+            <TextView
+                android:id="@+id/label_empresa"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_empresa"
+                android:layout_toRightOf="@id/icon_empresa"
+                tools:text="Bolivariano"
                 android:text="@{rest.empresa}"
                 />
 
@@ -73,55 +167,109 @@
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/label_place"
-                android:layout_toRightOf="@id/icon_place"
-                android:text="@string/detail_address" />
+                android:layout_below="@id/label_empresa"
+                android:layout_toRightOf="@id/icon_empresa"
+                android:paddingBottom="15dp"
+                android:text="Empresa"
+                android:id="@+id/label_emp"/>
 
             <ImageView
-                android:id="@+id/icon_star"
+                android:id="@+id/icon_Fecha"
                 style="@style/IconDetail"
-                android:layout_below="@id/icon_place"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@+id/label_emp"
                 android:src="@drawable/calendario" />
 
             <TextView
-                android:id="@+id/label_star"
+                android:id="@+id/label_fecha"
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/icon_star"
-                android:layout_toRightOf="@id/icon_star"
-                tools:text="5.5"
-                android:text='@{""+rest.idTiquete}'
+                android:layout_alignTop="@id/icon_Fecha"
+                android:layout_toRightOf="@id/icon_Fecha"
+                tools:text="12-10-2016"
+                android:text="@{rest.fecha}"
                 />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/label_star"
-                android:layout_toRightOf="@id/icon_star"
-                android:text="@string/detail_score" />
+                android:layout_below="@id/label_fecha"
+                android:layout_toRightOf="@id/icon_Fecha"
+                android:text="Fecha del viaje"
+                android:paddingBottom="10dp"
+                android:id="@+id/label_fec"/>
+
+            <ImageView
+                android:id="@+id/icon_hora"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@+id/label_fec"
+                android:src="@drawable/hora" />
+
+            <TextView
+                android:id="@+id/label_hora"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_hora"
+                android:layout_toRightOf="@id/icon_hora"
+                tools:text="9:00"
+                android:text="@{rest.hora}"
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_hora"
+                android:layout_toRightOf="@id/icon_hora"
+                android:text="Hora de Salida"
+                android:paddingBottom="10dp"
+                android:id="@+id/label_hor"/>
+
+            <ImageView
+                android:id="@+id/icon_silla"
+                style="@style/IconDetail"
+                android:layout_marginBottom="@dimen/medium"
+                android:layout_below="@+id/label_hor"
+                android:src="@drawable/silla" />
+
+            <TextView
+                android:id="@+id/label_silla"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/icon_silla"
+                android:layout_toRightOf="@id/icon_silla"
+                tools:text="2"
+                android:text='@{""+rest.silla}'
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_silla"
+                android:layout_toRightOf="@id/icon_silla"
+                android:text="Silla Asignada"
+                android:paddingBottom="10dp"
+                />
 
 
         </RelativeLayout>
-
         <View
             android:layout_height="1dp"
             android:background="@color/divider" />
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:layout_marginBottom="@dimen/small"
+            style="@style/TextAppearance.AppCompat.Small"
             android:paddingLeft="@dimen/medium"
             android:paddingRight="@dimen/medium"
             android:paddingTop="@dimen/medium"
-            android:text="@string/detail_description" />
+            android:text="@string/recomendacion" />
 
-        <TextView
-            style="@style/TextAppearance.AppCompat.Body1"
-            android:padding="@dimen/medium"
-            tools:text="@string/ipsum"
-            android:text="@{rest.origen}"
-            />
+
     </TableLayout>
 </layout>
