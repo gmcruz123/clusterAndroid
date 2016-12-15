@@ -2,28 +2,33 @@ package unicauca.movil.midestin;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
 
-import unicauca.movil.midestin.Adapters.TiqueteAdapter;
+import unicauca.movil.midestin.Adapters.ReservaAdapter;
 import unicauca.movil.midestin.databinding.ActivityMainBinding;
 import unicauca.movil.midestin.models.Tiquete;
 import unicauca.movil.midestin.util.L;
 
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, TiqueteAdapter.OnTiqueteListener {
+/**
+ * Created by Kathe on 14/12/2016.
+ */
+
+public class ReservasActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, ReservaAdapter.OnReservaListener {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
 
-    TiqueteAdapter adapter;
+    ReservaAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
         binding.drawer.addDrawerListener(this);
         L.data = new ArrayList<>();
-        adapter= new TiqueteAdapter(getLayoutInflater(),this);
+        adapter= new ReservaAdapter(getLayoutInflater(),this);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
 
@@ -99,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r1.setModo("compra");
         r1.setHora("9:00");
         r1.setPrecio(70000);
-        r1.setFechav("2016-12-11");
         r1.setSilla(2);
+        r1.setFechav("2016-12-11");
         r1.setCedula(1235);
         r1.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
@@ -114,8 +119,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         r2.setFecha("2016-12-13");
         r2.setModo("compra");
         r2.setPrecio(70000);
-        r2.setHora("12:00");
         r2.setFechav("2016-12-11");
+        r2.setHora("12:00");
         r2.setCedula(124);
         r2.setSilla(5);
         r2.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
@@ -128,11 +133,11 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     //endregion
     @Override
-    public void onTiquete(View v) {
+    public void onReserva(View v) {
         int  pos = binding.recycler.getChildAdapterPosition(v);
 
-        Intent intent = new Intent(this, DetailActivityTiquete.class);
-        intent.putExtra(DetailActivityTiquete.EXTRA_POS,pos);
+        Intent intent = new Intent(this, DetailActivityReserva.class);
+        intent.putExtra(DetailActivityReserva.EXTRA_POS,pos);
         startActivity(intent);
     }
 }

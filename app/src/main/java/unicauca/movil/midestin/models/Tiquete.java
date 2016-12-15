@@ -13,11 +13,13 @@ public class Tiquete {
     private String hora;
     private String modo;
     private String imagen;
-
+    private String fechav;
 
 
     private int idTiquete;
-    private double cedula,precio, silla ;
+    private int cedula;
+    private int precio;
+    private int silla ;
 
 
     public int getIdTiquete() {
@@ -34,7 +36,25 @@ public class Tiquete {
     public String getImagen() {
         return imagen;
     }
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
 
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public void setSilla(int silla) {
+        this.silla = silla;
+    }
+
+    public String getFechav() {
+        return fechav;
+    }
+
+    public void setFechav(String fechav) {
+        this.fechav = fechav;
+    }
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
@@ -93,29 +113,20 @@ public class Tiquete {
     }
 
 
-
     public double getCedula() {
         return cedula;
     }
 
-    public void setCedula(double cedula) {
-        this.cedula = cedula;
-    }
 
     public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
 
     public double getSilla() {
         return silla;
     }
 
-    public void setSilla(double silla) {
-        this.silla = silla;
-    }
+
 
 }

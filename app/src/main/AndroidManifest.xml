@@ -20,6 +20,8 @@
         </activity>
 
         <activity android:name=".MainActivity"/>
+        <activity android:name=".ReservasActivity"/>
+        <activity android:name=".DetailActivityReserva" android:theme="@style/NoActionBar"/>
         <activity android:name=".DetailActivityTiquete" android:theme="@style/NoActionBar"/>
     </application>
 

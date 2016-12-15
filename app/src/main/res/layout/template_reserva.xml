@@ -10,14 +10,14 @@
             type="unicauca.movil.midestin.models.Tiquete"/>
 
         <variable
-            name="handler"
-            type="unicauca.movil.midestin.Adapters.TiqueteAdapter"/>
+            name="handlerreserva"
+            type="unicauca.movil.midestin.Adapters.ReservaAdapter"/>
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(view)-> handler.onClickTiquete(view)}">
+        android:onClick="@{(view)-> handlerreserva.onClickReserva(view)}">
 
 
         <android.support.v7.widget.CardView
@@ -33,8 +33,8 @@
 
                 <ImageView
                     android:id="@+id/img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
                     android:background="#333"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
@@ -48,7 +48,7 @@
                     android:layout_height="@dimen/icon"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/carro"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/img"
                     android:id="@+id/tiquete" />
 
@@ -61,9 +61,22 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tiquete"
                     android:paddingBottom="15dp"
-                    tools:text="TIQUETE"
-                    android:text='@{"Tiquete No."+tiq.idTiquete}'
+                    tools:text="Reserva"
+                    android:text='@{"Reserva No."+tiq.idTiquete}'
                     android:id="@+id/tiqueteText" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_toRightOf="@+id/img"
+                    android:layout_alignStart="@+id/tiquete"
+                    android:layout_below="@id/tiquete"
+                    android:paddingBottom="4dp"
+                    tools:text="Vence: "
+                    android:text='@{"Vence: "+tiq.fechav}'
+                    android:id="@+id/vence" />
 
                 <ImageView
 
@@ -71,7 +84,7 @@
                     android:layout_height="@dimen/icon"
                     android:src="@drawable/calendario"
                     android:layout_marginLeft="4dp"
-                    android:layout_below="@id/tiquete"
+                    android:layout_below="@id/vence"
                     android:layout_toRightOf="@+id/img"
                     android:id="@+id/calendario" />
 
@@ -84,7 +97,7 @@
                     android:paddingTop="4dp"
                     tools:text="fecha"
                     android:text="@{tiq.fecha}"
-                    android:layout_below="@+id/tiquete"
+                    android:layout_below="@+id/vence"
                     android:layout_toRightOf="@+id/calendario"
                     android:layout_marginLeft="5dp"
                     android:id="@+id/fecha" />
@@ -94,8 +107,8 @@
                     android:layout_width="@dimen/icon"
                     android:layout_height="@dimen/icon"
                     android:src="@drawable/hora"
-                    android:layout_marginLeft="50dp"
-                    android:layout_below="@id/tiquete"
+                    android:layout_marginLeft="25dp"
+                    android:layout_below="@id/vence"
                     android:layout_toRightOf="@+id/fecha"
                     android:id="@+id/reloj" />
 
@@ -108,7 +121,7 @@
                     android:paddingTop="4dp"
                     tools:text="hora"
                     android:text="@{tiq.hora}"
-                    android:layout_below="@+id/tiquete"
+                    android:layout_below="@+id/vence"
                     android:layout_toRightOf="@+id/reloj"
                     android:layout_marginLeft="5dp"
                     android:id="@+id/hora" />
@@ -130,6 +143,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#000"
                     android:layout_alignBottom="@+id/origen"
+                    android:layout_alignStart="@+id/fecha"
                     android:paddingBottom="4dp"
                     android:paddingTop="13dp"
                     tools:text="Origen"
@@ -176,3 +190,4 @@
         </android.support.v7.widget.CardView>
     </FrameLayout>
 </layout>
+
