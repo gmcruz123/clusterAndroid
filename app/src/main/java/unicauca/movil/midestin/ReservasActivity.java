@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,7 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
-
+    private NavigationView nvDra;
     ReservaAdapter adapter;
 
 
@@ -47,9 +48,39 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
         adapter= new ReservaAdapter(getLayoutInflater(),this);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
-
+        nvDra=(NavigationView)findViewById(R.id.nav);
+        setupDrawerContent(nvDra);
         loadData();
     }
+
+    private void setupDrawerContent(NavigationView navigationView){
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener(){
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                }
+        );
+    }
+
+    public void selectDrawerItem(MenuItem item){
+        Intent about;
+        switch (item.getItemId()){
+            case R.id.nav_reservas:
+                about= new Intent(getApplicationContext(), ReservasActivity.class);
+                startActivity(about);
+                break;
+            case R.id.nav_tiquetes:
+                about= new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(about);
+                break;
+
+
+        }
+    }
+
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
