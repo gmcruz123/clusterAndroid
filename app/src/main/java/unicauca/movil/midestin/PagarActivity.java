@@ -6,39 +6,36 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import unicauca.movil.midestin.databinding.ActivityLoginBinding;
+import unicauca.movil.midestin.databinding.ActivityPagarBinding;
+import unicauca.movil.midestin.databinding.ActivityRegistrarBinding;
 
 /**
- * Created by Kathe on 13/12/2016.
+ * Created by Kathe on 15/12/2016.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class PagarActivity extends AppCompatActivity {
 
-    ActivityLoginBinding binding;
+   ActivityPagarBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_pagar);
         binding.setHandler(this);
 
 
     }
 
     public void goToMain(){
-        String usr =  binding.usr.getEditText().getText().toString();
+        String name = binding.nombre.getEditText().getText().toString();
+
+        int ced = Integer.valueOf(binding.cedula.getEditText().getText().toString());
         String pass =  binding.pass.getEditText().getText().toString();
 
-        Log.i("Destino", "Usr:"+usr+" Pass:"+pass);
+        Log.i("Destino", "Nombre:"+name+" Cedula:"+ced+" Pass:"+pass);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-    public void goToRegistrar(){
-
-        Intent intent = new Intent(this, PagarActivity.class);
-        startActivity(intent);
-    }
 }
-

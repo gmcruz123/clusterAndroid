@@ -32,4 +32,6 @@
     <string name="recomendacion">Recuerde llegar 10 minutos antes de la hora de salida para reclamar su tiquete.</string>
     <string name="nombre">nombre</string>
     <string name="cedula">cedula</string>
+    <string name="no_de_cuenta">No. de cuenta</string>
+    <string name="pagar">Pagar</string>
 </resources>
