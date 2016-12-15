@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 about= new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(about);
                 break;
+            case R.id.nav_comprar:
+                about= new Intent(getApplicationContext(), RutaActivity.class);
+                startActivity(about);
 
 
         }

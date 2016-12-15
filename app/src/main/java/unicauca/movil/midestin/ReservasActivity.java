@@ -76,6 +76,9 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
                 about= new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(about);
                 break;
+            case R.id.nav_comprar:
+                about= new Intent(getApplicationContext(), RutaActivity.class);
+                startActivity(about);
 
 
         }

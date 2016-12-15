@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToRegistrar(){
 
-        Intent intent = new Intent(this, PagarActivity.class);
+        Intent intent = new Intent(this, RegistrarActivity.class);
         startActivity(intent);
     }
 }
