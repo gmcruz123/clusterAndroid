@@ -30,4 +30,6 @@
     <string name="informacion">Informacion</string>
     <string name="mi_destino">Mi destino</string>
     <string name="recomendacion">Recuerde llegar 10 minutos antes de la hora de salida para reclamar su tiquete.</string>
+    <string name="nombre">nombre</string>
+    <string name="cedula">cedula</string>
 </resources>

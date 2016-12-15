@@ -1,5 +1,6 @@
 package unicauca.movil.midestin;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
@@ -66,9 +67,9 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         if(toggle.onOptionsItemSelected(item)){
         return true;
         }
-        int id= item.getItemId();
+
         Intent about;
-        switch (id){
+        switch (item.getItemId()){
             case R.id.nav_reservas:
                 about= new Intent(getApplicationContext(), ReservasActivity.class);
                 startActivity(about);

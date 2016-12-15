@@ -7,37 +7,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import unicauca.movil.midestin.databinding.ActivityLoginBinding;
+import unicauca.movil.midestin.databinding.ActivityRegistrarBinding;
 
 /**
- * Created by Kathe on 13/12/2016.
+ * Created by Kathe on 15/12/2016.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class RegistrarActivity  extends AppCompatActivity {
 
-    ActivityLoginBinding binding;
+
+    ActivityRegistrarBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_registrar);
         binding.setHandler(this);
 
 
     }
 
     public void goToMain(){
-        String usr =  binding.usr.getEditText().getText().toString();
+        String name = binding.nombre.getEditText().getText().toString();
+        String usr =  binding.usr.getEditText().toString();
+        int ced = Integer.valueOf(binding.cedula.getEditText().getText().toString());
         String pass =  binding.pass.getEditText().getText().toString();
 
-        Log.i("Destino", "Usr:"+usr+" Pass:"+pass);
+        Log.i("Destino", "Nombre:"+name+" Cedula:"+ced+" Usr:"+usr+" Pass:"+pass);
 
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void goToRegistrar(){
-
-        Intent intent = new Intent(this, RegistrarActivity.class);
         startActivity(intent);
     }
 }

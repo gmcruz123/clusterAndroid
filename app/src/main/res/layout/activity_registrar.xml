@@ -7,9 +7,8 @@
     <data>
         <variable
             name="handler"
-            type="unicauca.movil.midestin.LoginActivity"
+            type="unicauca.movil.midestin.RegistrarActivity"
             />
-
 
     </data>
 
@@ -24,17 +23,17 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/login_img"
+                android:layout_height="120dp"
                 android:src="@drawable/colombia"
                 android:scaleType="centerCrop" />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Display1"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
                 android:textColor="#ffff"
-                android:layout_gravity="bottom"
+                android:layout_gravity="center|bottom"
                 android:padding="@dimen/small" />
 
             <ImageView
@@ -45,13 +44,50 @@
 
         </FrameLayout>
 
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:text="REGISTRO"
+            android:layout_marginTop="@dimen/small"
+            android:textSize="@dimen/medium"
+            android:layout_marginLeft="130dp"
+             />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_height="0dp"
             android:padding="@dimen/small"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            >
 
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nombre">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/medium"
+                    android:inputType="text"
+                    android:hint="@string/nombre" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cedula">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/medium"
+                    android:inputType="number"
+                    android:hint="@string/cedula" />
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -77,23 +113,17 @@
                     android:inputType="textPassword"
                     android:hint="@string/login_pass" />
             </android.support.design.widget.TextInputLayout>
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="@string/login_reg"
+                android:paddingTop="@dimen/small"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
 
-        <TableRow>
 
-            <Button
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:text="@string/login_reg"
-                android:onClick="@{()-> handler.goToRegistrar()}"/>
-
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:text="@string/login_in"
-                android:onClick="@{()-> handler.goToMain()}"/>
-                />
-        </TableRow>
 
     </TableLayout>
 </layout>
