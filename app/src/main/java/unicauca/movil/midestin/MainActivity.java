@@ -3,11 +3,15 @@ package unicauca.movil.midestin;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
-
+    private Toolbar toolbar;
     TiqueteAdapter adapter;
 
     @Override
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        //toolbar =(Toolbar) findViewById(R.id.nav_action);
+       // setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(this,
@@ -46,20 +52,48 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         loadData();
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_nav, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(toggle.onOptionsItemSelected(item)){
+        return true;
+        }
+        int id= item.getItemId();
+        Intent about;
+        switch (id){
+            case R.id.nav_reservas:
+                about= new Intent(getApplicationContext(), ReservasActivity.class);
+                startActivity(about);
+                return true;
+            case R.id.nav_tiquetes:
+                about= new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(about);
+                return true;
+
+            default:
+                return  super.onOptionsItemSelected(item);
+        }
+
+    }
+
+
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         toggle.syncState();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(toggle.onOptionsItemSelected(item))
-            return true;
 
-        return  super.onOptionsItemSelected(item);
 
-    }
+
     //region toggle menu
 
     @Override
@@ -69,13 +103,19 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     @Override
     public void onDrawerOpened(View drawerView) {
+
         toggle.onDrawerOpened(drawerView);
+        invalidateOptionsMenu();
     }
 
     @Override
     public void onDrawerClosed(View drawerView) {
+
         toggle.onDrawerClosed(drawerView);
+        invalidateOptionsMenu();
     }
+
+
 
     @Override
     public void onDrawerStateChanged(int newState) {

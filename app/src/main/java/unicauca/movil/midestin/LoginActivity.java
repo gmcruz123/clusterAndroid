@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.i("Destino", "Usr:"+usr+" Pass:"+pass);
 
-        Intent intent = new Intent(this, ReservasActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

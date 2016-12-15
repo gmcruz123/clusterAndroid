@@ -10,17 +10,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"
-                    android:theme="@style/NoActionBar"/>
+                    />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".ReservasActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ReservasActivity" />
         <activity android:name=".DetailActivityReserva" android:theme="@style/NoActionBar"/>
         <activity android:name=".DetailActivityTiquete" android:theme="@style/NoActionBar"/>
     </application>

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+
     <item android:id="@+id/nav_tiquetes"
         android:title="@string/tus_tiquetes"
         />
     <item android:id="@+id/nav_reservas"
         android:title="@string/tus_reservas"
+
+
         />
     <item android:id="@+id/nav_comprar"
         android:title="@string/comprar"
