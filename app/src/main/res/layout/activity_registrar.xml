@@ -118,7 +118,8 @@
                 android:text="@string/login_reg"
                 android:paddingTop="@dimen/small"
                 android:layout_width="120dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> handler.Registrar()}"/>
 
         </LinearLayout>
 

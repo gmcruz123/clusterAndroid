@@ -76,7 +76,7 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
     public void onClick(DialogInterface dialog, int pos) {
 
           String selectedItem=ciudades[pos];
-          Toast.makeText(this,selectedItem,Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(this,selectedItem,Toast.LENGTH_SHORT).show();
         if(i==1)
          ((TextView) findViewById(R.id.ori)).setText(selectedItem);
         if(i==2)
