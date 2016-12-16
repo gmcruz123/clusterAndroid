@@ -145,6 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_alignBaseline="@id/label_destino"
                 android:layout_toRightOf="@id/label_destino"
+                android:id="@+id/btn1"
                 android:layout_height="wrap_content"/>
 
             <TextView

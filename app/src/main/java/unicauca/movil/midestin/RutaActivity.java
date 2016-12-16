@@ -33,9 +33,10 @@ import unicauca.movil.midestin.models.Ciudad;
 public class RutaActivity extends AppCompatActivity implements DialogInterface.OnClickListener, DatePickerDialog.OnDateSetListener {
     ActivityRutaBinding binding;
     static String[] ciudades = {"Cali", "Bogota","Popayan"};
-    Button btn;
+    Button btn,btn1;
     AlertDialog ad;
     Ciudad ciudad;
+    int i=0;
 
 
     @Override
@@ -50,8 +51,17 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
         btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View arg0) {
              ad.show();
+                i=1;
             }
         });
+        btn1=(Button) findViewById(R.id.btn1);
+        btn1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View arg0) {
+                ad.show();
+                i=2;
+            }
+        });
+
 
         AlertDialog.Builder builder= new AlertDialog.Builder(this);
         builder.setTitle("            Selecciona la Ciudad ");
@@ -64,10 +74,17 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onClick(DialogInterface dialog, int pos) {
+
           String selectedItem=ciudades[pos];
           Toast.makeText(this,selectedItem,Toast.LENGTH_SHORT).show();
+        if(i==1)
          ((TextView) findViewById(R.id.ori)).setText(selectedItem);
+        if(i==2)
+        ((TextView) findViewById(R.id.des)).setText(selectedItem);
     }
+
+
+
 
     public void datePicker(View view){
         DatePickerFragment fragment =new DatePickerFragment();
