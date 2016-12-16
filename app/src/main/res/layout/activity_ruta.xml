@@ -2,15 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".RutaActivity" >
+    tools:context="app.calendarView.RutaActivity" >
 
     <data>
         <variable
-            name="handler"
+            name="ciudad"
             type="unicauca.movil.midestin.RutaActivity"
             />
 
     </data>
+
 
     <TableLayout
         android:id="@+id/activity_login"
@@ -18,6 +19,8 @@
         android:layout_height="match_parent"
         android:stretchColumns="*"
         >
+
+
         <android.support.v7.widget.Toolbar
             android:text="ESCOGE TU RUTA"
             app:titleTextColor="@color/colorPrimary"
@@ -25,6 +28,7 @@
             android:background="@color/colorAccent"
             android:layout_height="30dp"
             >
+
             <TextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
@@ -39,7 +43,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="100dp"
                 android:src="@drawable/ruta"
                 android:scaleType="centerCrop" />
 
@@ -71,44 +75,125 @@
             android:layout_marginLeft="55dp"
             />
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="vertical"
             android:layout_height="0dp"
-            android:padding="@dimen/medium"
             android:layout_weight="1"
             android:gravity="center"
+
             >
-            <Button
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:text="Origen"
-                android:paddingTop="@dimen/small"
-                android:layout_width="match_parent"
+
+            <TextView
+                android:id="@+id/label_origen"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/label_tiquete"
+                android:padding="@dimen/small"
+                android:text="Selecciona el origen"
+
+                />
+            <TextView
+                android:id="@+id/ori"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:paddingLeft="20dp"
+                android:layout_marginLeft="@dimen/medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label_origen"
+                tools:text="Bogota"
+                 android:paddingBottom="@dimen/medium"
+
+                />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="Elegir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/label_origen"
                 android:id="@+id/btn"
-                android:onClick="showDialogListView"/>
+                />
+            <TextView
+                android:id="@+id/label_destino"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ori"
+                android:padding="@dimen/small"
+                android:text="Selecciona el destino"
+
+                />
+
+            <TextView
+                android:id="@+id/des"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:paddingLeft="20dp"
+                android:layout_marginLeft="@dimen/medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label_destino"
+                tools:text="Bogota"
+                android:paddingBottom="@dimen/medium"
+
+                />
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:text="Destino"
-                android:paddingTop="@dimen/small"
-                android:layout_width="match_parent"
+                android:text="Elegir"
+                android:layout_alignStart="@+id/btn"
+                android:layout_width="wrap_content"
+                android:layout_alignBaseline="@id/label_destino"
+                android:layout_toRightOf="@id/label_destino"
                 android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/label_sfecha"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/des"
+                android:padding="@dimen/small"
+                android:text="Selecciona el destino"
+
+                />
+
+            <TextView
+                android:id="@+id/fec"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:paddingLeft="20dp"
+                android:layout_marginLeft="@dimen/medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label_sfecha"
+                tools:text="Bogota"
+                android:paddingBottom="@dimen/medium"
+
+                />
+
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:text="Fecha"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:text="@string/login_reg"
-                android:paddingTop="@dimen/small"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
+                android:text="Elegir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/btn"
+                android:layout_alignBaseline="@id/label_sfecha"
+                android:layout_toRightOf="@id/label_origen"
+                android:id="@+id/verfecha"
+                android:onClick="datePicker"
+                />
 
 
+        </RelativeLayout>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:text="VER HORARIOS"
+            android:layout_toRightOf="@id/label_origen"
+            android:layout_below="@id/fec"
+            android:id="@+id/buscar"
+
+            />
 
 
     </TableLayout>
