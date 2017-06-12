@@ -41,7 +41,7 @@ public class TiqueteDao {
 
     public void insert(Tiquete usuario){
         ContentValues values = new ContentValues();
-        values.put(C_ID,usuario.getIdTiquete());
+
         values.put(C_NOMBRE,usuario.getNombre());
         values.put(C_EMP,usuario.getEmpresa());
         values.put(C_OR,usuario.getOrigen());
@@ -57,6 +57,7 @@ public class TiqueteDao {
 
 
         db.insert(TABLE, null, values);
+
     }
     public void update(Tiquete usuario){
         ContentValues values = new ContentValues();

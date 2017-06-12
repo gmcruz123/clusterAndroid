@@ -120,9 +120,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValuesH.put("empresa", "Bolivariano");
         contentValuesH.put("fecha", "16/12/1016");
         contentValuesH.put("hora", "9:00");
-        contentValuesH.put("imagen", "http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg");
+        contentValuesH.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
         contentValuesH.put("trayecto", 1);
         contentValuesH.put("precio", 90000);
+
 
         sqLiteDatabase.insert("horario",null, contentValuesH);
     }

@@ -13,6 +13,26 @@ public class Tiquete {
     private String hora;
     private String modo;
     private String imagen;
+
+    public Tiquete(String nombre, String empresa, String origen, String destino, String fecha, String hora, String modo, String imagen, String fechav, int cedula, int precio, int silla) {
+        this.nombre = nombre;
+        this.empresa = empresa;
+        this.origen = origen;
+        this.destino = destino;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.modo = modo;
+        this.imagen = imagen;
+        this.fechav = fechav;
+        this.cedula = cedula;
+        this.precio = precio;
+        this.silla = silla;
+    }
+
+    public Tiquete(){
+
+    }
+
     private String fechav;
 
 

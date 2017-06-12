@@ -182,6 +182,7 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
 
         Intent intent = new Intent(this, PagarActivity.class);
         intent.putExtra(PagarActivity.EXTRA_POS,pos);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 

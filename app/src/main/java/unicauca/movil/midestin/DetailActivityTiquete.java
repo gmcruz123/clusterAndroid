@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.util.Log;
 import android.view.ViewTreeObserver;
 
+import unicauca.movil.midestin.database.TiqueteDao;
 import unicauca.movil.midestin.databinding.ActivityDetailTiqueteBinding;
 import unicauca.movil.midestin.models.Tiquete;
+import unicauca.movil.midestin.models.Usuario;
 import unicauca.movil.midestin.util.L;
 
 
@@ -24,16 +27,31 @@ public class DetailActivityTiquete  extends AppCompatActivity implements  ViewTr
     public static final int DARKEN = 20;
 
     ActivityDetailTiqueteBinding binding;
+    Tiquete tiq;
+    Tiquete res;
+    TiqueteDao dao;
+    Usuario user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_tiquete);
+        tiq=new Tiquete();
+        int pos =  getIntent().getExtras().getInt("Posicion");
+        user= (Usuario) getIntent().getExtras().getSerializable("user");
+        Log.i("Usuario",user.getNombre()+" "+user.getCedula());
+        tiq=dao.list("compra",user.getCedula()).get(pos);
 
-        int pos =  getIntent().getExtras().getInt(EXTRA_POS);
-        Tiquete res = L.data.get(pos);
+        Log.i("Dest: ", "Tiquete registrado fin:"+ tiq.getIdTiquete());
+        if(tiq==null){
+             pos =  getIntent().getExtras().getInt(EXTRA_POS);
 
+            res = L.data.get(pos);
+        }
+        else{
+            res=tiq;
+        }
         binding.setRes(res);
 
         binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(this);
