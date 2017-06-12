@@ -4,11 +4,19 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,32 +33,48 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import unicauca.movil.midestin.databinding.ActivityRutaBinding;
 import unicauca.movil.midestin.models.Ciudad;
+import unicauca.movil.midestin.models.Usuario;
 
 /**
  * Created by Kathe on 15/12/2016.
  */
 
-public class RutaActivity extends AppCompatActivity implements DialogInterface.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class RutaActivity extends AppCompatActivity implements DialogInterface.OnClickListener,DrawerLayout.DrawerListener, DatePickerDialog.OnDateSetListener {
     ActivityRutaBinding binding;
+    ActionBarDrawerToggle toggle;
+    private NavigationView nvDra;
     static String[] ciudades = {"Cali", "Bogota","Popayan"};
     Button btn,btn1;
     AlertDialog ad;
+    Usuario user ;
     Ciudad ciudad;
-    int i=0;
+    int i=0, origen, destino,trayecto;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_ruta);
+        user= (Usuario) getIntent().getExtras().getSerializable("user");
+        binding.setCiudad(this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toggle = new ActionBarDrawerToggle(this,
+                binding.drawer,
+                R.string.menu_open,
+                R.string.menu_close);
+
+        binding.drawer.addDrawerListener(this);
+        nvDra=(NavigationView)findViewById(R.id.nav);
+        setupDrawerContent(nvDra);
 
 
         //Titulo e inicializacion
-        setTitle("   COMPRAR O RESERVAR TIQUETE");
+        setTitle(" COMPRAR O RESERVAR ");
         btn=(Button) findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View arg0) {
-             ad.show();
+                ad.show();
                 i=1;
             }
         });
@@ -72,20 +96,126 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
 
     }
 
+    private void setupDrawerContent(NavigationView navigationView){
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener(){
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                }
+        );
+    }
+
+    public void selectDrawerItem(MenuItem item){
+        Intent about;
+        switch (item.getItemId()){
+            case R.id.nav_reservas:
+                about= new Intent(getApplicationContext(), ReservasActivity.class);
+                about.putExtra("user", user);
+                startActivity(about);
+                break;
+            case R.id.nav_tiquetes:
+                about= new Intent(getApplicationContext(), MainActivity.class);
+                about.putExtra("user", user);
+                startActivity(about);
+                break;
+            case R.id.nav_comprar:
+                about= new Intent(getApplicationContext(), RutaActivity.class);
+                about.putExtra("user", user);
+                startActivity(about);
+                break;
+            case R.id.cerrar:
+                about= new Intent(getApplicationContext(), LoginActivity.class);
+                about.putExtra("user", user);
+                startActivity(about);
+                break;
+
+
+        }
+    }
+    //region toggle menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_nav, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(toggle.onOptionsItemSelected(item)){
+            return true;
+        }
+
+        return  super.onOptionsItemSelected(item);
+
+
+    }
+
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toggle.syncState();
+    }
+
+
+
+    @Override
+    public void onDrawerSlide(View drawerView, float slideOffset) {
+        toggle.onDrawerSlide(drawerView, slideOffset);
+    }
+
+    @Override
+    public void onDrawerOpened(View drawerView) {
+
+        toggle.onDrawerOpened(drawerView);
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    public void onDrawerClosed(View drawerView) {
+
+        toggle.onDrawerClosed(drawerView);
+        invalidateOptionsMenu();
+    }
+
+
+
+    @Override
+    public void onDrawerStateChanged(int newState) {
+        toggle.onDrawerStateChanged(newState);
+    }
+    //endregion
+
+
+
+
     @Override
     public void onClick(DialogInterface dialog, int pos) {
 
-          String selectedItem=ciudades[pos];
+        String selectedItem=ciudades[pos];
         //  Toast.makeText(this,selectedItem,Toast.LENGTH_SHORT).show();
-        if(i==1)
-         ((TextView) findViewById(R.id.ori)).setText(selectedItem);
-        if(i==2)
-        ((TextView) findViewById(R.id.des)).setText(selectedItem);
+        if(i==1){
+            ((TextView) findViewById(R.id.ori)).setText(selectedItem);
+            origen=pos;
+        }
+
+        if(i==2){
+            ((TextView) findViewById(R.id.des)).setText(selectedItem);
+            destino=pos;
+        }
+
+
     }
 
 
 
 
+    //region Datepicker
     public void datePicker(View view){
         DatePickerFragment fragment =new DatePickerFragment();
         fragment.show(getFragmentManager(),"date");
@@ -104,6 +234,8 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
         setDate(cal);
     }
 
+
+
     public static  class DatePickerFragment extends DialogFragment{
 
         @Override
@@ -117,5 +249,38 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
             return new DatePickerDialog(getActivity(),
                     (DatePickerDialog.OnDateSetListener)getActivity(),year,month,day) ;
         }
+    }
+    //endregion
+
+    public void goToRegistrar(){
+        Log.i("Destino", " Trayecto:"+trayecto+" origen:"+origen);
+        if(origen==destino){
+            Toast.makeText(this,"Seleccione correctamente origen y destino",Toast.LENGTH_LONG).show();
+        }
+        else{
+
+            if(origen==0 && destino==1)
+                trayecto=1;
+            if(origen==0 && destino==2)
+                trayecto=2;
+            if(origen==1 && destino==0)
+                trayecto=3;
+            if(origen==1 && destino==2)
+                trayecto=4;
+            if(origen==2 && destino==0)
+                trayecto=5;
+            if(origen==2 && destino==1)
+                trayecto=6;
+
+
+            Log.i("Destino", " Trayecto:"+trayecto+" origen:"+origen);
+
+            Intent intent = new Intent(this, HorarioActivity.class);
+            intent.putExtra("try", trayecto);
+            intent.putExtra("user", user);
+            startActivity(intent);
+
+        }
+
     }
 }

@@ -1,60 +1,62 @@
 package unicauca.movil.midestin;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import unicauca.movil.midestin.Adapters.TiqueteAdapter;
+import unicauca.movil.midestin.Adapters.HorarioAdapter;
+import unicauca.movil.midestin.Adapters.ReservaAdapter;
+import unicauca.movil.midestin.database.HorarioDao;
 import unicauca.movil.midestin.database.TiqueteDao;
 import unicauca.movil.midestin.databinding.ActivityMainBinding;
+import unicauca.movil.midestin.databinding.TemplateHorarioBinding;
+import unicauca.movil.midestin.models.Horario;
 import unicauca.movil.midestin.models.Tiquete;
 import unicauca.movil.midestin.models.Usuario;
+import unicauca.movil.midestin.util.H;
 import unicauca.movil.midestin.util.L;
 
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, TiqueteAdapter.OnTiqueteListener {
+/**
+ * Created by Kathe on 4/06/2017.
+ */
+
+public class HorarioActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, HorarioAdapter.OnHorarioListener {
 
     ActivityMainBinding binding;
-    TiqueteDao dao;
     ActionBarDrawerToggle toggle;
-    private Toolbar toolbar;
-    TiqueteAdapter adapter;
-    Tiquete tiq;
-    Usuario user ;
-    ArrayList<Tiquete> array;
     private NavigationView nvDra;
+    HorarioAdapter adapter;
+    HorarioDao dao;
+    Usuario user ;
+    Horario hor;
+    int trye;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        dao=new TiqueteDao(this);
-        tiq= new Tiquete();
-        //toolbar =(Toolbar) findViewById(R.id.nav_action);
-       // setSupportActionBar(toolbar);
+        Log.i("Destino", " Trayecto:"+(Integer) getIntent().getExtras().getSerializable("try"));
+        dao=new HorarioDao(this);
+        hor= new Horario();
+        trye =(Integer) (Integer) getIntent().getExtras().getSerializable("try");;
         user= (Usuario) getIntent().getExtras().getSerializable("user");
-        Log.i("Main", "onCreate:"+user.getNombre());
-
-
+        Log.i("Dest","Horarios registrados: "+dao.Count());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(this,
                 binding.drawer,
@@ -62,25 +64,20 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 R.string.menu_close);
 
         binding.drawer.addDrawerListener(this);
-        L.data = new ArrayList<>();
-        adapter= new TiqueteAdapter(getLayoutInflater(),this);
+        H.data = new ArrayList<>();
+        adapter= new HorarioAdapter(getLayoutInflater(),this);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
         nvDra=(NavigationView)findViewById(R.id.nav);
         setupDrawerContent(nvDra);
 
-        int a = dao.Counter("compra", user.getCedula());
-        Log.i("Destino", ""+a);
-        if(a==0)
-        Toast.makeText(this,"Usted no tiene tiquetes registrados",Toast.LENGTH_LONG).show();
-        else
-        loadData();
+            loadData();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        L.data= dao.list("compra",user.getCedula());
+        H.data= dao.list(trye);
     }
 
     private void setupDrawerContent(NavigationView navigationView){
@@ -123,24 +120,6 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_nav, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(toggle.onOptionsItemSelected(item)){
-        return true;
-        }
-
-                return  super.onOptionsItemSelected(item);
-
-
-    }
-
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -148,9 +127,14 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         toggle.syncState();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(toggle.onOptionsItemSelected(item))
+            return true;
 
+        return  super.onOptionsItemSelected(item);
 
-
+    }
     //region toggle menu
 
     @Override
@@ -160,19 +144,13 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     @Override
     public void onDrawerOpened(View drawerView) {
-
         toggle.onDrawerOpened(drawerView);
-        invalidateOptionsMenu();
     }
 
     @Override
     public void onDrawerClosed(View drawerView) {
-
         toggle.onDrawerClosed(drawerView);
-        invalidateOptionsMenu();
     }
-
-
 
     @Override
     public void onDrawerStateChanged(int newState) {
@@ -183,22 +161,30 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     //region LoadData
     private void loadData(){
+        Log.i("Dest","Horarios registrados: "+dao.Count());
+        List<Horario> horarios=dao.list(trye);
+        H.data= horarios;
+        Log.i("Dest","Horario: "+horarios.size());
+        Log.i("Dest","Horario: "+horarios.get(0).getEmpresa());
+        Log.i("Dest","Horario: "+horarios);
 
-        List<Tiquete> tiquetes=dao.list("compra",user.getCedula());
-        L.data= tiquetes;
 
         adapter.notifyDataSetChanged();
 
         adapter.notifyDataSetChanged();
+
+
+    }
+
+    @Override
+    public void onHorario(View v) {
+        int  pos = binding.recycler.getChildAdapterPosition(v);
+
+        Intent intent = new Intent(this, PagarActivity.class);
+        intent.putExtra(PagarActivity.EXTRA_POS,pos);
+        startActivity(intent);
     }
 
     //endregion
-    @Override
-    public void onTiquete(View v) {
-        int  pos = binding.recycler.getChildAdapterPosition(v);
 
-        Intent intent = new Intent(this, DetailActivityTiquete.class);
-        intent.putExtra(DetailActivityTiquete.EXTRA_POS,pos);
-        startActivity(intent);
-    }
 }

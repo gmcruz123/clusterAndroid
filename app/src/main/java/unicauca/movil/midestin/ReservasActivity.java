@@ -9,14 +9,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import unicauca.movil.midestin.Adapters.ReservaAdapter;
+import unicauca.movil.midestin.database.TiqueteDao;
 import unicauca.movil.midestin.databinding.ActivityMainBinding;
 import unicauca.movil.midestin.models.Tiquete;
+import unicauca.movil.midestin.models.Usuario;
 import unicauca.movil.midestin.util.L;
 
 /**
@@ -29,6 +34,8 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
     ActionBarDrawerToggle toggle;
     private NavigationView nvDra;
     ReservaAdapter adapter;
+    TiqueteDao dao;
+    Usuario user ;
 
 
     @Override
@@ -36,6 +43,8 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        user= (Usuario) getIntent().getExtras().getSerializable("user");
+        dao=new TiqueteDao(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toggle = new ActionBarDrawerToggle(this,
@@ -50,7 +59,12 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
         nvDra=(NavigationView)findViewById(R.id.nav);
         setupDrawerContent(nvDra);
-        loadData();
+        int a = dao.Counter("reserva", user.getCedula());
+        Log.i("Destino", ""+a);
+        if(a==0)
+            Toast.makeText(this,"Usted no tiene reservas registrados",Toast.LENGTH_LONG).show();
+        else
+            loadData();
     }
 
     private void setupDrawerContent(NavigationView navigationView){
@@ -70,15 +84,24 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
         switch (item.getItemId()){
             case R.id.nav_reservas:
                 about= new Intent(getApplicationContext(), ReservasActivity.class);
+                about.putExtra("user", user);
                 startActivity(about);
                 break;
             case R.id.nav_tiquetes:
                 about= new Intent(getApplicationContext(), MainActivity.class);
+                about.putExtra("user", user);
                 startActivity(about);
                 break;
             case R.id.nav_comprar:
                 about= new Intent(getApplicationContext(), RutaActivity.class);
+                about.putExtra("user", user);
                 startActivity(about);
+                break;
+            case R.id.cerrar:
+                about= new Intent(getApplicationContext(), LoginActivity.class);
+                about.putExtra("user", user);
+                startActivity(about);
+                break;
 
 
         }
@@ -126,7 +149,7 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
     //region LoadData
     private void loadData(){
 
-
+    /*
         Tiquete r1 = new Tiquete();
         r1.setIdTiquete(1);
         r1.setEmpresa("Bolivariano");
@@ -160,7 +183,14 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
         r2.setImagen("http://www.lacosechaparrillada.com/wp-content/uploads/2015/03/para-inicio-centro-FILEminimizer.jpg");
 
         L.data.add(r1);
-        L.data.add(r2);
+        L.data.add(r2); */
+
+        List<Tiquete> tiquetes=dao.list("reserva",user.getCedula());
+        L.data= tiquetes;
+
+        adapter.notifyDataSetChanged();
+
+        adapter.notifyDataSetChanged();
 
         adapter.notifyDataSetChanged();
     }

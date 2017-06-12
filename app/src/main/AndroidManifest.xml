@@ -23,6 +23,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ReservasActivity" />
         <activity android:name=".RutaActivity" />
+        <activity android:name=".HorarioActivity" />
         <activity android:name=".RegistrarActivity" android:theme="@style/NoActionBar"/>
         <activity android:name=".PagarActivity" android:theme="@style/NoActionBar"/>
         <activity android:name=".DetailActivityReserva" android:theme="@style/NoActionBar"/>

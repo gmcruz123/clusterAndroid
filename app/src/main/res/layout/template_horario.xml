@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="hor"
+            type="unicauca.movil.midestin.models.Horario"/>
+
+        <variable
+            name="handler"
+            type="unicauca.movil.midestin.Adapters.HorarioAdapter"/>
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view)-> handler.onClickHorario(view)}">
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#333"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:scaleType="centerCrop"
+                    app:imgUrl= "@{hor.imagen}"
+                    />
+
+                <ImageView
+
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/pagar"
+                    android:layout_marginLeft="40dp"
+                    android:layout_toRightOf="@+id/img"
+                    android:id="@+id/tiquete" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tiquete"
+                    android:paddingBottom="15dp"
+                    tools:text="$50.000"
+                    android:text='@{"$"+hor.precio}'
+                    android:id="@+id/tiqueteText" />
+
+                <ImageView
+
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:src="@drawable/calendario"
+                    android:layout_marginLeft="4dp"
+                    android:layout_below="@id/tiquete"
+                    android:layout_toRightOf="@+id/img"
+                    android:id="@+id/calendario" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp"
+                    tools:text="fecha"
+                    android:text="@{hor.fecha}"
+                    android:layout_below="@+id/tiquete"
+                    android:layout_toRightOf="@+id/calendario"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/fecha" />
+
+                <ImageView
+
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:src="@drawable/hora"
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@id/tiquete"
+                    android:layout_toRightOf="@+id/fecha"
+                    android:id="@+id/reloj" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp"
+                    tools:text="hora"
+                    android:text="@{hor.hora}"
+                    android:layout_below="@+id/tiquete"
+                    android:layout_toRightOf="@+id/reloj"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/hora" />
+
+                <ImageView
+
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:src="@drawable/bus"
+                    android:layout_marginLeft="2dp"
+                    android:layout_below="@+id/calendario"
+                    android:layout_toRightOf="@id/img"
+                    android:id="@+id/origen"
+                    android:layout_alignBottom="@id/img"
+                    />
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:layout_alignBottom="@+id/origen"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="13dp"
+                    tools:text="Bolivariano"
+                    android:text="@{hor.empresa}"
+                    android:layout_below="@+id/fecha"
+                    android:layout_toRightOf="@+id/origen"
+                    android:id="@+id/origenText" />
+
+
+
+                <ImageView
+
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:src="@drawable/silla"
+                    android:layout_alignEnd="@+id/reloj"
+                    android:layout_alignStart="@+id/reloj"
+                    android:layout_alignBottom="@+id/origen"
+                    android:layout_below="@+id/hora"
+                    android:layout_toRightOf="@id/origenText"
+                    android:id="@+id/destino"
+
+                    />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="13dp"
+                    android:text="5 disponibles"
+                    android:layout_below="@+id/fecha"
+                    android:layout_toRightOf="@+id/destino"
+                    android:layout_alignBottom="@id/destino"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/destinoText" />
+
+            </RelativeLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+    </FrameLayout>
+</layout>
