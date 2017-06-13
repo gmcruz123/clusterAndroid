@@ -1,8 +1,6 @@
 package unicauca.movil.midestin.models;
 
-/**
- * Created by PC portatil on 12/06/2017.
- */
+
 
 public class Places {
 

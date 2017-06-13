@@ -10,9 +10,7 @@ import java.util.List;
 
 import unicauca.movil.midestin.models.Usuario;
 
-/**
- * Created by Kathe on 15/12/2016.
- */
+
 
 public class UsuarioDao {
     static final String TABLE= "usuario";

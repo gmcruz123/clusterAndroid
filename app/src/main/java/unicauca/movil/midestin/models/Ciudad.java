@@ -1,8 +1,6 @@
 package unicauca.movil.midestin.models;
 
-/**
- * Created by Kathe on 15/12/2016.
- */
+
 
 public class Ciudad {
     private int id;

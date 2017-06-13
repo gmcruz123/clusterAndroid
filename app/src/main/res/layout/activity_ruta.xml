@@ -192,20 +192,22 @@
         </RelativeLayout>
 
         <Button
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             style="@style/Widget.AppCompat.Button.Colored"
             android:text="VER RUTA"
-            android:layout_toRightOf="@id/label_origen"
             android:layout_below="@id/fec"
             android:background="@color/colorPrimary"
             android:id="@+id/horario"
             android:onClick="@{()-> ciudad.goToRuta()}"
 
             />
+
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
             android:text="VER HORARIOS"
             android:layout_toRightOf="@id/label_origen"
-            android:layout_below="@id/fec"
+            android:layout_below="@id/horario"
             android:id="@+id/buscar"
             android:onClick="@{()-> ciudad.goToRegistrar()}"
 

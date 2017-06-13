@@ -17,9 +17,7 @@ import unicauca.movil.midestin.models.Usuario;
 import unicauca.movil.midestin.util.L;
 
 
-/**
- * Created by Kathe on 14/12/2016.
- */
+
 
 public class DetailActivityTiquete  extends AppCompatActivity implements  ViewTreeObserver.OnGlobalLayoutListener {
 

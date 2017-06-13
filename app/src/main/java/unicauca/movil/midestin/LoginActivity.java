@@ -11,9 +11,7 @@ import unicauca.movil.midestin.database.UsuarioDao;
 import unicauca.movil.midestin.databinding.ActivityLoginBinding;
 import unicauca.movil.midestin.models.Usuario;
 
-/**
- * Created by Kathe on 13/12/2016.
- */
+
 
 public class LoginActivity extends AppCompatActivity {
 

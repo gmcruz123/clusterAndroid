@@ -30,9 +30,7 @@ import unicauca.movil.midestin.models.Usuario;
 import unicauca.movil.midestin.util.H;
 import unicauca.movil.midestin.util.L;
 
-/**
- * Created by Kathe on 4/06/2017.
- */
+
 
 public class HorarioActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, HorarioAdapter.OnHorarioListener {
 

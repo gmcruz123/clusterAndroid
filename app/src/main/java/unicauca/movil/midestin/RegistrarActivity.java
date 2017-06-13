@@ -12,9 +12,7 @@ import unicauca.movil.midestin.databinding.ActivityLoginBinding;
 import unicauca.movil.midestin.databinding.ActivityRegistrarBinding;
 import unicauca.movil.midestin.models.Usuario;
 
-/**
- * Created by Kathe on 15/12/2016.
- */
+
 
 public class RegistrarActivity  extends AppCompatActivity {
 

@@ -13,9 +13,7 @@ import unicauca.movil.midestin.databinding.ActivityDetailReservaBinding;
 import unicauca.movil.midestin.models.Tiquete;
 import unicauca.movil.midestin.util.L;
 
-/**
- * Created by Kathe on 14/12/2016.
- */
+
 
 public class DetailActivityReserva  extends AppCompatActivity implements  ViewTreeObserver.OnGlobalLayoutListener {
 

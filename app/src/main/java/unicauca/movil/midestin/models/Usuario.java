@@ -4,9 +4,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-/**
- * Created by Kathe on 15/12/2016.
- */
+
 
 public class        Usuario implements Serializable {
 

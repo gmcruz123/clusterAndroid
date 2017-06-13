@@ -25,7 +25,7 @@ import unicauca.movil.midestin.models.Usuario;
 import unicauca.movil.midestin.util.L;
 
 /**
- * Created by Kathe on 14/12/2016.
+ * Created by Kathe on 11/06/2017.
  */
 
 public class ReservasActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, ReservaAdapter.OnReservaListener {

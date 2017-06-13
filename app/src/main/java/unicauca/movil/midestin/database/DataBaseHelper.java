@@ -5,9 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Kathe on 15/12/2016.
- */
+
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -141,7 +139,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValuesH2.put("hora", "9:00");
         contentValuesH2.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
         contentValuesH2.put("trayecto", 2);
-        contentValuesH2.put("precio", 90000);
+        contentValuesH2.put("precio", 30000);
 
         ContentValues contentValuesH3 =new ContentValues();
         contentValuesH3.put("empresa", "Velotax");
@@ -166,10 +164,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues contentValuesH5 =new ContentValues();
         contentValuesH5.put("empresa", "Velotax");
         contentValuesH5.put("fecha", "16/12/1016");
-        contentValuesH5.put("hora", "9:00");
+        contentValuesH5.put("hora", "20:00");
         contentValuesH5.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
         contentValuesH5.put("trayecto", 5);
-        contentValuesH5.put("precio", 90000);
+        contentValuesH5.put("precio", 20000);
 
 
         ContentValues contentValuesH6 =new ContentValues();
@@ -181,20 +179,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValuesH6.put("precio", 95000);
 
         ContentValues contentValuesH14 =new ContentValues();
-        contentValuesH.put("empresa", "Bolivariano");
-        contentValuesH.put("fecha", "16/12/1016");
-        contentValuesH.put("hora", "18:00");
-        contentValuesH.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
-        contentValuesH.put("trayecto", 1);
-        contentValuesH.put("precio", 90000);
+        contentValuesH14.put("empresa", "Bolivariano");
+        contentValuesH14.put("fecha", "16/12/1016");
+        contentValuesH14.put("hora", "18:00");
+        contentValuesH14.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
+        contentValuesH14.put("trayecto", 1);
+        contentValuesH14.put("precio", 90000);
 
         ContentValues contentValuesH15 =new ContentValues();
-        contentValuesH6.put("empresa", "Velotax");
-        contentValuesH6.put("fecha", "16/12/1016");
-        contentValuesH6.put("hora", "20:00");
-        contentValuesH6.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
-        contentValuesH6.put("trayecto", 1);
-        contentValuesH6.put("precio", 95000);
+        contentValuesH15.put("empresa", "Velotax");
+        contentValuesH15.put("fecha", "16/12/1016");
+        contentValuesH15.put("hora", "20:00");
+        contentValuesH15.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH15.put("trayecto", 1);
+        contentValuesH15.put("precio", 95000);
 
         ContentValues contentValuesH7 =new ContentValues();
         contentValuesH7.put("empresa", "Velotax");
@@ -202,7 +200,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValuesH7.put("hora", "9:00");
         contentValuesH7.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
         contentValuesH7.put("trayecto", 2);
-        contentValuesH7.put("precio", 95000);
+        contentValuesH7.put("precio", 32000);
 
 
         ContentValues contentValuesH8 =new ContentValues();
@@ -229,7 +227,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValuesH10.put("hora", "9:00");
         contentValuesH10.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
         contentValuesH10.put("trayecto", 5);
-        contentValuesH10.put("precio", 95000);
+        contentValuesH10.put("precio", 23000);
 
 
         ContentValues contentValuesH11 =new ContentValues();
@@ -253,10 +251,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues contentValuesH13 =new ContentValues();
         contentValuesH13.put("empresa", "Velotax");
         contentValuesH13.put("fecha", "16/12/1016");
-        contentValuesH13.put("hora", "9:00");
+        contentValuesH13.put("hora", "11:00");
         contentValuesH13.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
         contentValuesH13.put("trayecto", 2);
-        contentValuesH13.put("precio", 96000);
+        contentValuesH13.put("precio", 32000);
 
 
 
@@ -276,7 +274,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert("horario",null, contentValuesH11);
         sqLiteDatabase.insert("horario",null, contentValuesH12);
         sqLiteDatabase.insert("horario",null, contentValuesH13);
-
+        sqLiteDatabase.insert("horario",null, contentValuesH14);
+        sqLiteDatabase.insert("horario",null, contentValuesH15);
 
 
 

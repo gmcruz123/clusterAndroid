@@ -61,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng origen = new LatLng(DataSites.getPlaces().get(0).getLatitud(),DataSites.getPlaces().get(0).getLongitud() );
             LatLng destino = new LatLng(DataSites.getPlaces().get(1).getLatitud(),DataSites.getPlaces().get(1).getLongitud());
             mMap.addMarker(new MarkerOptions().position(origen).title(DataSites.getPlaces().get(0).getNombre()));
-            mMap.addMarker(new MarkerOptions().position(destino).title(DataSites.getPlaces().get(0).getNombre()));
+            mMap.addMarker(new MarkerOptions().position(destino).title(DataSites.getPlaces().get(1).getNombre()));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(origen,8));
             mMap.addPolyline(new PolylineOptions().add(
                     origen,

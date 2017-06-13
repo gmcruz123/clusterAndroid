@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import unicauca.movil.midestin.models.Places;
 
-/**
- * Created by PC portatil on 12/06/2017.
- */
+
 
 public class DataSites {
     private static List<Places> places;

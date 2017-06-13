@@ -1,8 +1,5 @@
 package unicauca.movil.midestin.models;
 
-/**
- * Created by Kathe on 13/12/2016.
- */
 
 public class Tiquete {
     private String nombre;

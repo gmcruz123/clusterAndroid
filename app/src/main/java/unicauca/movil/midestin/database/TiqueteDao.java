@@ -12,9 +12,7 @@ import java.util.List;
 import unicauca.movil.midestin.models.Tiquete;
 import unicauca.movil.midestin.models.Usuario;
 
-/**
- * Created by Kathe on 16/12/2016.
- */
+
 
 public class TiqueteDao {
     static final String TABLE= "tiquete";

@@ -22,9 +22,6 @@ import unicauca.movil.midestin.models.Tiquete;
 import unicauca.movil.midestin.models.Usuario;
 import unicauca.movil.midestin.util.H;
 
-/**
- * Created by Kathe on 15/12/2016.
- */
 
 public class PagarActivity extends AppCompatActivity {
 
@@ -119,7 +116,7 @@ public class PagarActivity extends AppCompatActivity {
                     intent.putExtra("user",user);
                     startActivity(intent);}
                 else {
-                    Intent intent = new Intent(this, MainActivity.class);
+                    Intent intent = new Intent(this, ReservasActivity.class);
                     intent.putExtra("Posicion",desp-1);
                     intent.putExtra("user",user);
                     startActivity(intent);

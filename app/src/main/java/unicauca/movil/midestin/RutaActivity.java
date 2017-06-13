@@ -35,9 +35,7 @@ import unicauca.movil.midestin.databinding.ActivityRutaBinding;
 import unicauca.movil.midestin.models.Ciudad;
 import unicauca.movil.midestin.models.Usuario;
 
-/**
- * Created by Kathe on 15/12/2016.
- */
+
 
 public class RutaActivity extends AppCompatActivity implements DialogInterface.OnClickListener,DrawerLayout.DrawerListener, DatePickerDialog.OnDateSetListener {
     ActivityRutaBinding binding;
@@ -283,14 +281,14 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
 
         if (ori=="Popayan" && des =="Bogota" ||ori=="Bogota" && des =="Popayan" ){
 
-            origen=1;
+            origen=2;
             destino=3;
         }
 
 
         if (ori=="Cali" && des =="Bogota"||ori=="Bogota" && des =="Cali" ){
 
-            origen=2;
+            origen=1;
             destino=3;
         }
 
