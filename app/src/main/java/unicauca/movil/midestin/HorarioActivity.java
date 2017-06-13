@@ -66,6 +66,7 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
         user= (Usuario) getIntent().getExtras().getSerializable("user");
         Log.i("Dest","Horarios registrados: "+dao.Count());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Horarios");
         toggle = new ActionBarDrawerToggle(this,
                 binding.drawer,
                 R.string.menu_open,
@@ -106,11 +107,13 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
         Intent about;
         switch (item.getItemId()){
             case R.id.nav_reservas:
+                getSupportActionBar().setTitle("Reservas");
                 about= new Intent(getApplicationContext(), ReservasActivity.class);
                 about.putExtra("user", user);
                 startActivity(about);
                 break;
             case R.id.nav_tiquetes:
+                getSupportActionBar().setTitle("Tiquetes");
                 about= new Intent(getApplicationContext(), MainActivity.class);
                 about.putExtra("user", user);
                 startActivity(about);

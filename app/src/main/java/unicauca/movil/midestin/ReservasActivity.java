@@ -47,6 +47,7 @@ public class ReservasActivity extends AppCompatActivity implements DrawerLayout.
         dao=new TiqueteDao(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Reservas");
         toggle = new ActionBarDrawerToggle(this,
                 binding.drawer,
                 R.string.menu_open,

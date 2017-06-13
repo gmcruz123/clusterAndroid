@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Tiquetes");
         toggle = new ActionBarDrawerToggle(this,
                 binding.drawer,
                 R.string.menu_open,
@@ -99,11 +100,13 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         Intent about;
         switch (item.getItemId()){
             case R.id.nav_reservas:
+
                 about= new Intent(getApplicationContext(), ReservasActivity.class);
                 about.putExtra("user", user);
                 startActivity(about);
                 break;
             case R.id.nav_tiquetes:
+
                 about= new Intent(getApplicationContext(), MainActivity.class);
                 about.putExtra("user", user);
                 startActivity(about);
