@@ -49,7 +49,9 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
     Usuario user ;
     Ciudad ciudad;
     int i=0, origen, destino,trayecto;
-
+    public static String fecha;
+    public static String origen1;
+    public static String destino1;
 
 
     @Override
@@ -201,11 +203,13 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
         //  Toast.makeText(this,selectedItem,Toast.LENGTH_SHORT).show();
         if(i==1){
             ((TextView) findViewById(R.id.ori)).setText(selectedItem);
+            origen1=ciudades[pos];
             origen=pos;
         }
 
         if(i==2){
             ((TextView) findViewById(R.id.des)).setText(selectedItem);
+            destino1=ciudades[pos];
             destino=pos;
         }
 
@@ -225,6 +229,9 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
     private void setDate(final Calendar calendar){
         final DateFormat dateFormat= DateFormat.getDateInstance(DateFormat.MEDIUM);
         ((TextView) findViewById(R.id.fec)).setText(dateFormat.format(calendar.getTime()));
+
+         fecha = dateFormat.format(calendar.getTime());
+
     }
 
 
@@ -252,6 +259,58 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
     }
     //endregion
 
+    public void goToReservar(){
+
+
+
+    }
+
+
+
+    public void goToRuta(){
+
+        String ori = binding.ori.getText().toString();
+        String des = binding.des.getText().toString();
+
+        if (ori=="Popayan" && des =="Cali" || ori=="Cali"&& des=="Popayan"){
+
+            origen=1;
+            destino=2;
+        }
+
+
+
+
+        if (ori=="Popayan" && des =="Bogota" ||ori=="Bogota" && des =="Popayan" ){
+
+            origen=1;
+            destino=3;
+        }
+
+
+        if (ori=="Cali" && des =="Bogota"||ori=="Bogota" && des =="Cali" ){
+
+            origen=2;
+            destino=3;
+        }
+
+
+
+        Log.d("Lugares", "ORIGEN:"+origen+" DESTINO:"+destino);
+
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("ORIGEN", origen);
+        intent.putExtra("DESTINO", destino);
+        startActivity(intent);
+
+
+
+
+
+    }
+
+
+
     public void goToRegistrar(){
         Log.i("Destino", " Trayecto:"+trayecto+" origen:"+origen);
         if(origen==destino){
@@ -278,6 +337,9 @@ public class RutaActivity extends AppCompatActivity implements DialogInterface.O
             Intent intent = new Intent(this, HorarioActivity.class);
             intent.putExtra("try", trayecto);
             intent.putExtra("user", user);
+            intent.putExtra("fecha", fecha);
+            intent.putExtra("origen", origen1);
+            intent.putExtra("destino",destino1);
             startActivity(intent);
 
         }

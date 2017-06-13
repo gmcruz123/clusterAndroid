@@ -124,8 +124,163 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValuesH.put("trayecto", 1);
         contentValuesH.put("precio", 90000);
 
+        ContentValues contentValuesH1 =new ContentValues();
+        contentValuesH1.put("empresa", "Velotax");
+        contentValuesH1.put("fecha", "16/12/1016");
+        contentValuesH1.put("hora", "9:00");
+        contentValuesH1.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH1.put("trayecto", 0);
+        contentValuesH1.put("precio", 90000);
+
+
+
+        ContentValues contentValuesH2 =new ContentValues();
+
+        contentValuesH2.put("empresa", "Bolivariano");
+        contentValuesH2.put("fecha", "16/12/1016");
+        contentValuesH2.put("hora", "9:00");
+        contentValuesH2.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
+        contentValuesH2.put("trayecto", 2);
+        contentValuesH2.put("precio", 90000);
+
+        ContentValues contentValuesH3 =new ContentValues();
+        contentValuesH3.put("empresa", "Velotax");
+        contentValuesH3.put("fecha", "16/12/1016");
+        contentValuesH3.put("hora", "9:00");
+        contentValuesH3.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH3.put("trayecto", 3);
+        contentValuesH3.put("precio", 90000);
+
+
+
+
+        ContentValues contentValuesH4 =new ContentValues();
+
+        contentValuesH4.put("empresa", "Bolivariano");
+        contentValuesH4.put("fecha", "16/12/1016");
+        contentValuesH4.put("hora", "9:00");
+        contentValuesH4.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
+        contentValuesH4.put("trayecto", 4);
+        contentValuesH4.put("precio", 90000);
+
+        ContentValues contentValuesH5 =new ContentValues();
+        contentValuesH5.put("empresa", "Velotax");
+        contentValuesH5.put("fecha", "16/12/1016");
+        contentValuesH5.put("hora", "9:00");
+        contentValuesH5.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH5.put("trayecto", 5);
+        contentValuesH5.put("precio", 90000);
+
+
+        ContentValues contentValuesH6 =new ContentValues();
+        contentValuesH6.put("empresa", "Velotax");
+        contentValuesH6.put("fecha", "16/12/1016");
+        contentValuesH6.put("hora", "9:00");
+        contentValuesH6.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH6.put("trayecto", 1);
+        contentValuesH6.put("precio", 95000);
+
+        ContentValues contentValuesH14 =new ContentValues();
+        contentValuesH.put("empresa", "Bolivariano");
+        contentValuesH.put("fecha", "16/12/1016");
+        contentValuesH.put("hora", "18:00");
+        contentValuesH.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
+        contentValuesH.put("trayecto", 1);
+        contentValuesH.put("precio", 90000);
+
+        ContentValues contentValuesH15 =new ContentValues();
+        contentValuesH6.put("empresa", "Velotax");
+        contentValuesH6.put("fecha", "16/12/1016");
+        contentValuesH6.put("hora", "20:00");
+        contentValuesH6.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH6.put("trayecto", 1);
+        contentValuesH6.put("precio", 95000);
+
+        ContentValues contentValuesH7 =new ContentValues();
+        contentValuesH7.put("empresa", "Velotax");
+        contentValuesH7.put("fecha", "16/12/1016");
+        contentValuesH7.put("hora", "9:00");
+        contentValuesH7.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH7.put("trayecto", 2);
+        contentValuesH7.put("precio", 95000);
+
+
+        ContentValues contentValuesH8 =new ContentValues();
+        contentValuesH8.put("empresa", "Velotax");
+        contentValuesH8.put("fecha", "16/12/1016");
+        contentValuesH8.put("hora", "9:00");
+        contentValuesH8.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH8.put("trayecto", 3);
+        contentValuesH8.put("precio", 95000);
+
+
+        ContentValues contentValuesH9 =new ContentValues();
+        contentValuesH9.put("empresa", "Velotax");
+        contentValuesH9.put("fecha", "16/12/1016");
+        contentValuesH9.put("hora", "9:00");
+        contentValuesH9.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH9.put("trayecto", 4);
+        contentValuesH9.put("precio", 95000);
+
+
+        ContentValues contentValuesH10 =new ContentValues();
+        contentValuesH10.put("empresa", "Velotax");
+        contentValuesH10.put("fecha", "16/12/1016");
+        contentValuesH10.put("hora", "9:00");
+        contentValuesH10.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH10.put("trayecto", 5);
+        contentValuesH10.put("precio", 95000);
+
+
+        ContentValues contentValuesH11 =new ContentValues();
+        contentValuesH11.put("empresa", "Velotax");
+        contentValuesH11.put("fecha", "16/12/1016");
+        contentValuesH11.put("hora", "9:00");
+        contentValuesH11.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH11.put("trayecto", 6);
+        contentValuesH11.put("precio", 95000);
+
+
+        ContentValues contentValuesH12 =new ContentValues();
+        contentValuesH12.put("empresa", "Velotax");
+        contentValuesH12.put("fecha", "16/12/1016");
+        contentValuesH12.put("hora", "9:00");
+        contentValuesH12.put("imagen","http://www.terminalarmenia.com/userfiles/images/empresas/expresobolivariano.jpg" );
+        contentValuesH12.put("trayecto", 1);
+        contentValuesH12.put("precio", 90000);
+
+
+        ContentValues contentValuesH13 =new ContentValues();
+        contentValuesH13.put("empresa", "Velotax");
+        contentValuesH13.put("fecha", "16/12/1016");
+        contentValuesH13.put("hora", "9:00");
+        contentValuesH13.put("imagen","http://terminalhonda.com/images/empresas/Velotax_opt.jpg" );
+        contentValuesH13.put("trayecto", 2);
+        contentValuesH13.put("precio", 96000);
+
+
+
+
 
         sqLiteDatabase.insert("horario",null, contentValuesH);
+        sqLiteDatabase.insert("horario",null, contentValuesH1);
+        sqLiteDatabase.insert("horario",null, contentValuesH2);
+        sqLiteDatabase.insert("horario",null, contentValuesH3);
+        sqLiteDatabase.insert("horario",null, contentValuesH4);
+        sqLiteDatabase.insert("horario",null, contentValuesH5);
+        sqLiteDatabase.insert("horario",null, contentValuesH6);
+        sqLiteDatabase.insert("horario",null, contentValuesH7);
+        sqLiteDatabase.insert("horario",null, contentValuesH8);
+        sqLiteDatabase.insert("horario",null, contentValuesH9);
+        sqLiteDatabase.insert("horario",null, contentValuesH10);
+        sqLiteDatabase.insert("horario",null, contentValuesH11);
+        sqLiteDatabase.insert("horario",null, contentValuesH12);
+        sqLiteDatabase.insert("horario",null, contentValuesH13);
+
+
+
+
+
     }
 
     @Override

@@ -112,14 +112,36 @@
 
 
             </android.support.design.widget.TextInputLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    >
             <Button
+
+                android:id="@+id/button"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:text="@string/pagar"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> handler.goToRegistrar(1)}"
+                android:paddingTop="@dimen/small"
+                android:text="@string/pagar" />
+
+
+            <Button
+
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="@string/reservar"
                 android:paddingTop="@dimen/small"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:onClick="@{()-> handler.goToRegistrar()}"/> "
+                android:layout_marginLeft="60dp"
+                android:onClick="@{()-> handler.goToRegistrar(2)}"/>
 
+
+</LinearLayout>
         </LinearLayout>
 
 

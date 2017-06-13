@@ -37,17 +37,26 @@ public class DetailActivityTiquete  extends AppCompatActivity implements  ViewTr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_tiquete);
-        tiq=new Tiquete();
+
+        int pos =  getIntent().getExtras().getInt(EXTRA_POS);
+        Tiquete res = L.data.get(pos);
+        binding.setRes(res);
+        binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(this);
+
+   /*     tiq=new Tiquete();
+        dao=new TiqueteDao(this);
         int pos =  getIntent().getExtras().getInt("Posicion");
         user= (Usuario) getIntent().getExtras().getSerializable("user");
-        Log.i("Usuario",user.getNombre()+" "+user.getCedula());
-        tiq=dao.list("compra",user.getCedula()).get(pos);
+        Log.i("Usuario",user.getNombre()+" "+user.getCedula()+"pos"+pos);
+        Log.i("Dest","tiq:"+dao.list("compra",user.getCedula()).get(pos).getIdTiquete());
+        tiq= dao.list("compra",user.getCedula()).get(pos);
 
         Log.i("Dest: ", "Tiquete registrado fin:"+ tiq.getIdTiquete());
         if(tiq==null){
              pos =  getIntent().getExtras().getInt(EXTRA_POS);
 
             res = L.data.get(pos);
+
         }
         else{
             res=tiq;
@@ -55,7 +64,7 @@ public class DetailActivityTiquete  extends AppCompatActivity implements  ViewTr
         binding.setRes(res);
 
         binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(this);
-
+*/
     }
 
     @Override

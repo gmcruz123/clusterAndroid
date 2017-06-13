@@ -199,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
         Intent intent = new Intent(this, DetailActivityTiquete.class);
         intent.putExtra(DetailActivityTiquete.EXTRA_POS,pos);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }

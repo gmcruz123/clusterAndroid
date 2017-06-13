@@ -10,6 +10,10 @@
             type="unicauca.movil.midestin.models.Horario"/>
 
         <variable
+            name="fecha"
+            type="String"/>
+
+        <variable
             name="handler"
             type="unicauca.movil.midestin.Adapters.HorarioAdapter"/>
     </data>

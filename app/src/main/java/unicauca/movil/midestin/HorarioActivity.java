@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
     Usuario user ;
     Horario hor;
     int trye;
+    String fecha,origen,destino;
 
 
 
@@ -51,10 +53,16 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
         Log.i("Destino", " Trayecto:"+(Integer) getIntent().getExtras().getSerializable("try"));
         dao=new HorarioDao(this);
         hor= new Horario();
-        trye =(Integer) (Integer) getIntent().getExtras().getSerializable("try");;
+        trye =(Integer) (Integer) getIntent().getExtras().getSerializable("try");
+        fecha = getIntent().getExtras().getString("fecha");
+        origen=  getIntent().getExtras().getString("origen");
+
+        destino=getIntent().getExtras().getString("destino");
+        Log.d("fechaaaa",fecha);
         user= (Usuario) getIntent().getExtras().getSerializable("user");
         Log.i("Dest","Horarios registrados: "+dao.Count());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -72,12 +80,14 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
         setupDrawerContent(nvDra);
 
             loadData();
+
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        H.data= dao.list(trye);
+        H.data= dao.list(trye,fecha);
     }
 
     private void setupDrawerContent(NavigationView navigationView){
@@ -162,7 +172,7 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
     //region LoadData
     private void loadData(){
         Log.i("Dest","Horarios registrados: "+dao.Count());
-        List<Horario> horarios=dao.list(trye);
+        List<Horario> horarios=dao.list(trye,fecha);
         H.data= horarios;
         Log.i("Dest","Horario: "+horarios.size());
         Log.i("Dest","Horario: "+horarios.get(0).getEmpresa());
@@ -183,6 +193,10 @@ public class HorarioActivity extends AppCompatActivity implements DrawerLayout.D
         Intent intent = new Intent(this, PagarActivity.class);
         intent.putExtra(PagarActivity.EXTRA_POS,pos);
         intent.putExtra("user",user);
+        intent.putExtra("fecha",fecha);
+        intent.putExtra("origen",origen);
+        intent.putExtra("destino",destino);
+
         startActivity(intent);
     }
 

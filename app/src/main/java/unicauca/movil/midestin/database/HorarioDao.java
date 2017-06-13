@@ -58,12 +58,12 @@ public class HorarioDao {
         db.delete(TABLE,"id=?", new String[]{""+id});
     }
 
-    public  Horario getById(Long id){
+    public  Horario getById(Long id,String fecha){
         String sql = "SELECT * FROM "+ TABLE + "WHERE id ="+id;
         Cursor cursor = db.rawQuery(sql,null);
         if(cursor.getCount()>0){
             cursor.moveToNext();
-            return cursorToUsuario(cursor);
+            return cursorToUsuario(cursor,fecha);
         }else
             return null;
     }
@@ -78,11 +78,11 @@ public class HorarioDao {
     }
 
 
-    public List<Horario> list(int c){
+    public List<Horario> list(int c, String fecha){
         Log.i("Destino","String trayecto "+c);
         String sql ="SELECT * FROM "+ TABLE + " WHERE trayecto="+c ;
         Log.i("Destino", sql);
-        return cursorToList(sql);
+        return cursorToList(sql, fecha);
     }
 
     public int Counter(String c,int ced){
@@ -94,11 +94,11 @@ public class HorarioDao {
 
 
 
-    private Horario cursorToUsuario(Cursor cursor){
+    private Horario cursorToUsuario(Cursor cursor,String fecha){
         Horario p = new Horario();
         p.setId(cursor.getInt(0));
         p.setEmpresa(cursor.getString(1));
-        p.setFecha(cursor.getString(2));
+        p.setFecha(fecha);
         p.setHora(cursor.getString(3));
         p.setImagen(cursor.getString(4));
         p.setTrayecto(cursor.getInt(5));
@@ -106,12 +106,13 @@ public class HorarioDao {
        // Log.i("Dest",p.getModo()+" "+ p.getCedula());
         return p;
     }
-    private List<Horario> cursorToList(String sql){
+    private List<Horario> cursorToList(String sql, String fecha){
         Cursor cursor = db.rawQuery(sql,null);
         List<Horario> data = new ArrayList<>();
 
         while(cursor.moveToNext()){
-            Horario p = cursorToUsuario(cursor);
+            Horario p = cursorToUsuario(cursor, fecha);
+            fecha = fecha;
            // Log.i("Dest",p.getModo()+" "+ p.getCedula());
             data.add(p);
         }

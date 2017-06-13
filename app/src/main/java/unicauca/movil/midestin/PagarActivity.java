@@ -8,6 +8,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import unicauca.movil.midestin.database.TiqueteDao;
 import unicauca.movil.midestin.databinding.ActivityPagarBinding;
@@ -28,6 +33,11 @@ public class PagarActivity extends AppCompatActivity {
     Usuario user;
     TiqueteDao dao;
     Horario res;
+    String fecha;
+    String origen;
+    String destino;
+    final DateFormat dateFormat= DateFormat.getDateInstance(DateFormat.MEDIUM);
+
 
 
     @Override
@@ -36,6 +46,11 @@ public class PagarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pagar);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_pagar);
         int pos =  getIntent().getExtras().getInt(EXTRA_POS);
+
+        fecha = getIntent().getExtras().getString("fecha");
+        origen=  getIntent().getExtras().getString("origen");
+        destino=getIntent().getExtras().getString("destino");
+
         res = H.data.get(pos);
         user= (Usuario) getIntent().getExtras().getSerializable("user");
         dao= new TiqueteDao(this);
@@ -58,26 +73,37 @@ public class PagarActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToRegistrar(){
+    public void goToRegistrar(int  tipo){
 
+
+        String Modo;
         String nombre = binding.nombre.getEditText().getText().toString();
         String cedula = binding.cedula.getEditText().getText().toString();
         String cuenta = binding.cuenta.getEditText().getText().toString();
         String password =  binding.pass.getEditText().getText().toString();
+        Calendar calendar = Calendar.getInstance();
 
-        int antes= dao.Counter("compra",user.getCedula());
+
+        if(tipo==1)
+            Modo="compra";
+        else
+            Modo="reserva";
+
+        int antes= dao.Counter(Modo,user.getCedula());
         Log.i("Dest: ", "antes"+antes);
 
         if(nombre.isEmpty() || cuenta.isEmpty()|| cedula.isEmpty() || password.isEmpty()){
             Toast.makeText(this,"Por favor llene todos los campos",Toast.LENGTH_SHORT).show();
         }
+
         else{
-           Tiquete tiq= new Tiquete(user.getNombre(),res.getEmpresa(),"Cali","Bogota",res.getFecha(),res.getHora(),
-           "compra",res.getImagen(),"2017/07/01",user.getCedula(),res.getPrecio(),5);
+
+           Tiquete tiq= new Tiquete(user.getNombre(),res.getEmpresa(),origen,destino,fecha,res.getHora(),
+           Modo,res.getImagen(),fecha+"",user.getCedula(),res.getPrecio(),5);
 
             dao.insert(tiq);
             finish();
-            int desp= dao.Counter("compra",user.getCedula());
+            int desp= dao.Counter(Modo,user.getCedula());
             Log.i("Dest: ", "desp"+desp);
             if(antes==desp)
             {
@@ -85,12 +111,20 @@ public class PagarActivity extends AppCompatActivity {
             }
             else{
                 Toast.makeText(this,"Tiquete Registrado",Toast.LENGTH_SHORT).show();
-                Log.i("Dest","tiq:"+dao.list("compra",user.getCedula()).get(desp-1).getIdTiquete());
+                Log.i("Dest","tiq:"+dao.list(Modo,user.getCedula()).get(desp-1).getIdTiquete());
 
-                Intent intent = new Intent(this, DetailActivityTiquete.class);
-                intent.putExtra("Posicion",desp-1);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                if(tipo==1)
+                {Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("Posicion",desp-1);
+                    intent.putExtra("user",user);
+                    startActivity(intent);}
+                else {
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("Posicion",desp-1);
+                    intent.putExtra("user",user);
+                    startActivity(intent);
+                }
+
 
             }
 
